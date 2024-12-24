@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_final_all/pages/AccountPage.dart';
 import 'pages/HomePage.dart';
-import 'pages/ComputerSetPage.dart';
-import 'pages/DIYComputerPage.dart';
+import 'pages/ItEuipment.dart';
 import 'pages/NotebookPage.dart';
 import 'pages/AboutUsPage.dart';
 import 'pages/CartPage.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
 }
 
@@ -21,8 +21,7 @@ class _MyAppState extends State<MyApp> {
   final List<Widget> _pages = [
     HomePage(),
     NotebookPage(),
-    ComputerSetPage(),
-    DIYComputerPage(),
+    ItEuipment(),
     AboutUsPage(),
     CartPage(),
   ];
@@ -37,18 +36,27 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: const Color(0xff0077B6),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _currentIndex = 4; // Switch to CartPage
+                });
+              },
               icon: const Icon(Icons.shopping_cart, color: Colors.white),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountPage()),
+                );
+              },
               icon: const Icon(Icons.account_circle, color: Colors.white),
             ),
           ],
         ),
         body: _pages[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
+          currentIndex: _currentIndex < 4 ? _currentIndex : 0,
           onTap: (index) {
             setState(() {
               _currentIndex = index;
@@ -79,3 +87,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+

@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class NotebookPage extends StatelessWidget {
+class ItEuipment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,8 +12,8 @@ class NotebookPage extends StatelessWidget {
 }
 
 class ProductDetailPage extends StatelessWidget {
-  final LaptopModel laptop;
-  final List<LaptopModel> allLaptops;
+  final EquipmentModel laptop;
+  final List<EquipmentModel> allLaptops;
 
   ProductDetailPage({
     required this.laptop,
@@ -196,13 +197,13 @@ class ProductDetailPage extends StatelessWidget {
   }
 }
 
-class LaptopModel {
+class EquipmentModel {
   final String name;
   final String image;
   final int price;
   final String description;
 
-  LaptopModel({
+  EquipmentModel({
     required this.name,
     required this.image,
     required this.price,
@@ -216,85 +217,93 @@ class LaptopSalesPage extends StatefulWidget {
 }
 
 class _LaptopSalesPageState extends State<LaptopSalesPage> {
-  final List<LaptopModel> laptops = [
-    LaptopModel(
-      name: 'ACER Aspire Lite AL14-31P',
-      image:
-          'assets/images/laptop/ACER Aspire Lite AL14-31P INTEL N100 3.6Ghz RAM LPDDR4 8Gb M.2 NVME 256Gb Monitor 14.0 LAP177.jpg',
-      price: 60000000,
-      description:
-          'Equipped with Intel N100 processor reaching 3.6GHz, 8GB LPDDR4 RAM, and 256GB M.2 NVMe storage. Features a 14.0-inch display.',
+final List<EquipmentModel> equipments = [
+    EquipmentModel(
+      name: 'ACER 19V 3.42A 5.5x1.7 Original',
+      image: 'assets/images/ItEuipment/ACER-19V-3.42A-5.5x1.7-Original-NBC001.jpg',
+      price: 250000,
+      description: 'Original ACER power adapter with 19V output at 3.42A, connector size 5.5x1.7mm',
     ),
-    LaptopModel(
-      name: 'ASUS TUF Gaming F15',
-      image:
-          'assets/images/laptop/ASUS TUF Gaming F15 INTEL i9-13900H Max Turbo 5.4Ghz RAM DDR5 16Gb M.2 NVME 1Tb RTX4060 8Gb Monitor 15.6 LAP173.jpg',
-      price: 900000,
-      description:
-          'Powered by Intel i9-13900H with max turbo of 5.4GHz, 16GB DDR5 RAM, 1TB M.2 NVMe storage, and RTX 4060 8GB graphics. Showcases content on a 15.6-inch display.',
+    EquipmentModel(
+      name: 'Cable LAN SSTP Cat7 5M Unitek',
+      image: 'assets/images/ItEuipment/Cable-LAN-SSTP-Cat7-5M-Unitek-C1812EBK-UNT255.jpg',
+      price: 180000,
+      description: 'High-speed Cat7 SSTP LAN cable, 5 meters length, by Unitek',
     ),
-    LaptopModel(
-      name: 'DELL Inspiron 15',
-      image:
-          'assets/images/laptop/DELL Inspiron 15 3530 INTEL i7-1355U Max Turbo 5.0Ghz RAM DDR4 16Gb M.2 NVME 512Gb Monitor 15.6 LAP176.jpg',
-      price: 900000,
-      description:
-          'Features Intel i7-1355U processor with max turbo of 5.0GHz, 16GB DDR4 RAM, and 512GB M.2 NVMe storage. Comes with a 15.6-inch display.',
+    EquipmentModel(
+      name: 'Cable LAN UTP Cat6 5M Unitek',
+      image: 'assets/images/ItEuipment/Cable-LAN-UTP-Cat6-5M-Unitek-Y-C812ABL-UNT205.jpg',
+      price: 120000,
+      description: 'Reliable Cat6 UTP network cable, 5 meters length, by Unitek',
     ),
-    LaptopModel(
-      name: 'HP-Victus-16',
-      image:
-          'assets/images/laptop/HP-Victus-16-INTEL-i7-13620H-Max-Turbo-4.9Ghz-RAM-DDR5-16Gb-M.2-NVME-512Gb-RTX4060-8Gb-Monitor-15.6-LAP182.jpg',
-      price: 900000,
-      description:
-          'Runs on Intel i7-13620H reaching 4.9GHz, 16GB DDR5 RAM, 512GB M.2 NVMe storage, and RTX 4060 8GB graphics. Sports a 15.6-inch display.',
+    EquipmentModel(
+      name: 'Cable USB 2.0 2M Unitek',
+      image: 'assets/images/ItEuipment/Cable-USB(2.0)-2M-Unitek-Y-C450gbk-UNT302.jpg',
+      price: 50000,
+      description: 'Standard USB 2.0 cable, 2 meters length, by Unitek',
     ),
-    LaptopModel(
-      name: 'LENOVO LOQ 15IRH8',
-      image:
-          'assets/images/laptop/LENOVO LOQ 15IRH8 INTEL i5-13420H Max Turbo 4.6Ghz RAM DDR5 16Gb M.2 NVME 512Gb RTX3050 6Gb Monitor 15.6 LAP174.jpg',
-      price: 900000,
-      description:
-          'Powered by Intel i5-13420H with max turbo of 4.6GHz, 16GB DDR5 RAM, 512GB M.2 NVMe storage, and RTX 3050 6GB graphics. Features a 15.6-inch display.',
+    EquipmentModel(
+      name: 'Cable VGA 10M OEM',
+      image: 'assets/images/ItEuipment/Cable-VGA-10M-OEM-ADD019.jpg',
+      price: 150000,
+      description: 'VGA display cable, 10 meters length, OEM quality',
     ),
-    LaptopModel(
-      name: 'LENOVO ThinkPad L15',
-      image:
-          'assets/images/laptop/LENOVO-ThinkPad-L15-INTEL-i5-1345U-Max-Turbo-4.7Ghz-RAM-DDR4-32Gb-M.2-NVME-512Gb-Monitor-15.6-LAP179.jpg',
-      price: 900000,
-      description:
-          'Equipped with Intel i5-1345U reaching 4.7GHz, 32GB DDR4 RAM, and 512GB M.2 NVMe storage. Includes a 15.6-inch display.',
+    EquipmentModel(
+      name: 'HP DHE-8001U USB Headphone',
+      image: 'assets/images/ItEuipment/Headphone-HP-DHE-8001U-USB-Sound-7.1-LED-ADA199.jpg',
+      price: 300000,
+      description: '7.1 surround sound USB headphone with LED lighting',
     ),
-    LaptopModel(
-      name: 'LENOVO YOGA 7 (2024)',
-      image:
-          'assets/images/laptop/LENOVO-YOGA-7-(2024)-AMD-Ryzen-7-8840HS-Max-Turbo-5.1Ghz-RAM-LPDDR5-16Gb-M.2-NVME-1Tb-Monitor-14.0-LAP212.jpg',
-      price: 900000,
-      description:
-          'Features AMD Ryzen 7 8840HS with max turbo of 5.1GHz, 16GB LPDDR5 RAM, and 1TB M.2 NVMe storage. Showcases content on a 14.0-inch display.',
+    EquipmentModel(
+      name: 'LENOVO Thinkplus G80 USB Headphone',
+      image: 'assets/images/ItEuipment/Headphone-LENOVO-thinkplus-G80-USB-Sound-7.1-RGB-ADA217.jpg',
+      price: 350000,
+      description: '7.1 surround sound USB headphone with RGB lighting',
     ),
-    LaptopModel(
-      name: 'MSI Thin 15',
-      image:
-          'assets/images/laptop/MSI-Thin-15-INTEL-i5-12450H-3.3Ghz-Max-Turbo-4.4Ghz-RAM-DDR4-16Gb-M.2-NVME-512Gb-RTX2050-4Gb-Monitor-15.6-LAP181.jpg',
-      price: 900000,
-      description:
-          'Runs on Intel i5-12450H reaching 4.4GHz, 16GB DDR4 RAM, 512GB M.2 NVMe storage, and RTX 2050 4GB graphics. Includes a 15.6-inch display.',
-    )
-  ];
+    EquipmentModel(
+      name: 'Ucom 208 USB Joystick',
+      image: 'assets/images/ItEuipment/Joystick-Ucom-208-(One)--USB-ADH006.jpg',
+      price: 150000,
+      description: 'USB gaming joystick controller compatible with PC',
+    ),
+    EquipmentModel(
+      name: 'Lenovo Lecoo MC01S Microphone',
+      image: 'assets/images/ItEuipment/Microphone-PC-Lenovo-Lecoo-MC01S-ADA302.jpg',
+      price: 200000,
+      description: 'PC microphone for clear audio recording and communication',
+    ),
+    EquipmentModel(
+      name: 'SAMSUNG 990 PRO 2TB SSD',
+      image: 'assets/images/ItEuipment/SSD M.2 2280 NVME 2Tb PCIe Gen4 x4 SAMSUNG 990 PRO DTD882.jpg',
+      price: 2500000,
+      description: '2TB M.2 NVMe PCIe Gen4 x4 SSD for high-speed storage',
+    ),
+    EquipmentModel(
+      name: 'Unitek Type-C Hub',
+      image: 'assets/images/ItEuipment/Type-C-to-HDMI-VGA-LAN-Gigabit-3USB-3.0-Type-C-PD-100W-SDCard-Unitek-D1113A-UNT908.jpg',
+      price: 450000,
+      description: 'Multi-function Type-C hub with HDMI, VGA, LAN, USB 3.0, and PD charging',
+    ),
+    EquipmentModel(
+      name: 'Ruijie Reyee RG-EW300T Router',
+      image: 'assets/images/ItEuipment/Wireless-Router-4G-300Mbps-Ruijie-Reyee-RG-EW300T-NET362.jpg',
+      price: 550000,
+      description: '4G wireless router with 300Mbps speed for reliable connectivity',
+    ),
+];
 
-  late List<LaptopModel> filteredLaptops;
+  late List<EquipmentModel> filteredLaptops;
   final TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    filteredLaptops = laptops;
+    filteredLaptops = equipments;
   }
 
   void searchLaptops(String query) {
     setState(() {
-      filteredLaptops = laptops.where((laptop) {
+      filteredLaptops = equipments.where((laptop) {
         final searchLower = query.toLowerCase();
         return laptop.name.toLowerCase().contains(searchLower) ||
             laptop.description.toLowerCase().contains(searchLower) ||
@@ -351,7 +360,7 @@ class _LaptopSalesPageState extends State<LaptopSalesPage> {
                         MaterialPageRoute(
                           builder: (context) => ProductDetailPage(
                             laptop: laptop,
-                            allLaptops: laptops,
+                            allLaptops: equipments,
                           ),
                         ),
                       );

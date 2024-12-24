@@ -48,7 +48,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,12 +64,27 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     # - assets\images
-    - assets\images\1.jpeg
-    - assets\images\2.jpeg
-    - assets\images\3.jpeg
-    - assets\images\4.jpeg
-    - assets\images\laptop2.jpeg
-    - assets\images\laptop1.jpeg
+    - assets\images\laptop\ACER Aspire Lite AL14-31P INTEL N100 3.6Ghz RAM LPDDR4 8Gb M.2 NVME 256Gb Monitor 14.0 LAP177.jpg
+    - assets\images\laptop\ASUS TUF Gaming F15 INTEL i9-13900H Max Turbo 5.4Ghz RAM DDR5 16Gb M.2 NVME 1Tb RTX4060 8Gb Monitor 15.6 LAP173.jpg
+    - assets\images\laptop\DELL Inspiron 15 3530 INTEL i7-1355U Max Turbo 5.0Ghz RAM DDR4 16Gb M.2 NVME 512Gb Monitor 15.6 LAP176.jpg
+    - assets\images\laptop\HP-Victus-16-INTEL-i7-13620H-Max-Turbo-4.9Ghz-RAM-DDR5-16Gb-M.2-NVME-512Gb-RTX4060-8Gb-Monitor-15.6-LAP182.jpg
+    - assets\images\laptop\LENOVO LOQ 15IRH8 INTEL i5-13420H Max Turbo 4.6Ghz RAM DDR5 16Gb M.2 NVME 512Gb RTX3050 6Gb Monitor 15.6 LAP174.jpg
+    - assets\images\laptop\LENOVO-ThinkPad-L15-INTEL-i5-1345U-Max-Turbo-4.7Ghz-RAM-DDR4-32Gb-M.2-NVME-512Gb-Monitor-15.6-LAP179.jpg
+    - assets\images\laptop\LENOVO-YOGA-7-(2024)-AMD-Ryzen-7-8840HS-Max-Turbo-5.1Ghz-RAM-LPDDR5-16Gb-M.2-NVME-1Tb-Monitor-14.0-LAP212.jpg
+    - assets\images\laptop\MSI-Thin-15-INTEL-i5-12450H-3.3Ghz-Max-Turbo-4.4Ghz-RAM-DDR4-16Gb-M.2-NVME-512Gb-RTX2050-4Gb-Monitor-15.6-LAP181.jpg
+    - assets\images\ItEuipment\ACER-19V-3.42A-5.5x1.7-Original-NBC001.jpg
+    - assets\images\ItEuipment\Cable-LAN-SSTP-Cat7-5M-Unitek-C1812EBK-UNT255.jpg
+    - assets\images\ItEuipment\Cable-LAN-UTP-Cat6-5M-Unitek-Y-C812ABL-UNT205.jpg
+    - assets\images\ItEuipment\Cable-USB(2.0)-2M-Unitek-Y-C450gbk-UNT302.jpg
+    - assets\images\ItEuipment\Cable-VGA-10M-OEM-ADD019.jpg
+    - assets\images\ItEuipment\Headphone-HP-DHE-8001U-USB-Sound-7.1-LED-ADA199.jpg
+    - assets\images\ItEuipment\Headphone-LENOVO-thinkplus-G80-USB-Sound-7.1-RGB-ADA217.jpg
+    - assets\images\ItEuipment\Joystick-Ucom-208-(One)--USB-ADH006.jpg
+    - assets\images\ItEuipment\Microphone-PC-Lenovo-Lecoo-MC01S-ADA302.jpg
+    - assets\images\ItEuipment\SSD M.2 2280 NVME 2Tb PCIe Gen4 x4 SAMSUNG 990 PRO DTD882.jpg
+    - assets\images\ItEuipment\Type-C-to-HDMI-VGA-LAN-Gigabit-3USB-3.0-Type-C-PD-100W-SDCard-Unitek-D1113A-UNT908.jpg
+    - assets\images\ItEuipment\Wireless-Router-4G-300Mbps-Ruijie-Reyee-RG-EW300T-NET362.jpg
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
