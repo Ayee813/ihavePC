@@ -1,6 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_final_all/pages/CartPage.dart';
+import 'package:flutter_final_all/pages/CheckOut/AddInformationPage.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class ItEuipment extends StatelessWidget {
   @override
@@ -90,26 +92,71 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                   SizedBox(height: 24),
                   SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Purchased ${laptop.name}')),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                      ),
-                      child: Text(
-                        'Buy Now',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
+                      width: double.infinity,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Provider.of<CartProvider>(context,
+                                        listen: false)
+                                    .addItem(
+                                  id: laptop
+                                      .name, // or equipment.name for ItEquipment
+                                  name: laptop.name,
+                                  image: laptop.image,
+                                  price: laptop.price,
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content:
+                                          Text('Added ${laptop.name} to cart')),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                padding: EdgeInsets.symmetric(vertical: 8),
+                              ),
+                              child: Text(
+                                'Add to Cart',
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                final cartProvider = Provider.of<CartProvider>(
+                                    context,
+                                    listen: false);
+                                cartProvider.addItem(
+                                  id: laptop.name,
+                                  name: laptop.name,
+                                  image: laptop.image,
+                                  price: laptop.price,
+                                );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AddInformationPage()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.green,
+                                padding: EdgeInsets.symmetric(vertical: 8),
+                              ),
+                              child: Text(
+                                'Buy Now',
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
                   SizedBox(height: 32),
                   Text(
                     'Other Products',
@@ -217,28 +264,34 @@ class LaptopSalesPage extends StatefulWidget {
 }
 
 class _LaptopSalesPageState extends State<LaptopSalesPage> {
-final List<EquipmentModel> equipments = [
+  final List<EquipmentModel> equipments = [
     EquipmentModel(
       name: 'ACER 19V 3.42A 5.5x1.7 Original',
-      image: 'assets/images/ItEuipment/ACER-19V-3.42A-5.5x1.7-Original-NBC001.jpg',
+      image:
+          'assets/images/ItEuipment/ACER-19V-3.42A-5.5x1.7-Original-NBC001.jpg',
       price: 250000,
-      description: 'Original ACER power adapter with 19V output at 3.42A, connector size 5.5x1.7mm',
+      description:
+          'Original ACER power adapter with 19V output at 3.42A, connector size 5.5x1.7mm',
     ),
     EquipmentModel(
       name: 'Cable LAN SSTP Cat7 5M Unitek',
-      image: 'assets/images/ItEuipment/Cable-LAN-SSTP-Cat7-5M-Unitek-C1812EBK-UNT255.jpg',
+      image:
+          'assets/images/ItEuipment/Cable-LAN-SSTP-Cat7-5M-Unitek-C1812EBK-UNT255.jpg',
       price: 180000,
       description: 'High-speed Cat7 SSTP LAN cable, 5 meters length, by Unitek',
     ),
     EquipmentModel(
       name: 'Cable LAN UTP Cat6 5M Unitek',
-      image: 'assets/images/ItEuipment/Cable-LAN-UTP-Cat6-5M-Unitek-Y-C812ABL-UNT205.jpg',
+      image:
+          'assets/images/ItEuipment/Cable-LAN-UTP-Cat6-5M-Unitek-Y-C812ABL-UNT205.jpg',
       price: 120000,
-      description: 'Reliable Cat6 UTP network cable, 5 meters length, by Unitek',
+      description:
+          'Reliable Cat6 UTP network cable, 5 meters length, by Unitek',
     ),
     EquipmentModel(
       name: 'Cable USB 2.0 2M Unitek',
-      image: 'assets/images/ItEuipment/Cable-USB(2.0)-2M-Unitek-Y-C450gbk-UNT302.jpg',
+      image:
+          'assets/images/ItEuipment/Cable-USB(2.0)-2M-Unitek-Y-C450gbk-UNT302.jpg',
       price: 50000,
       description: 'Standard USB 2.0 cable, 2 meters length, by Unitek',
     ),
@@ -250,13 +303,15 @@ final List<EquipmentModel> equipments = [
     ),
     EquipmentModel(
       name: 'HP DHE-8001U USB Headphone',
-      image: 'assets/images/ItEuipment/Headphone-HP-DHE-8001U-USB-Sound-7.1-LED-ADA199.jpg',
+      image:
+          'assets/images/ItEuipment/Headphone-HP-DHE-8001U-USB-Sound-7.1-LED-ADA199.jpg',
       price: 300000,
       description: '7.1 surround sound USB headphone with LED lighting',
     ),
     EquipmentModel(
       name: 'LENOVO Thinkplus G80 USB Headphone',
-      image: 'assets/images/ItEuipment/Headphone-LENOVO-thinkplus-G80-USB-Sound-7.1-RGB-ADA217.jpg',
+      image:
+          'assets/images/ItEuipment/Headphone-LENOVO-thinkplus-G80-USB-Sound-7.1-RGB-ADA217.jpg',
       price: 350000,
       description: '7.1 surround sound USB headphone with RGB lighting',
     ),
@@ -268,29 +323,35 @@ final List<EquipmentModel> equipments = [
     ),
     EquipmentModel(
       name: 'Lenovo Lecoo MC01S Microphone',
-      image: 'assets/images/ItEuipment/Microphone-PC-Lenovo-Lecoo-MC01S-ADA302.jpg',
+      image:
+          'assets/images/ItEuipment/Microphone-PC-Lenovo-Lecoo-MC01S-ADA302.jpg',
       price: 200000,
       description: 'PC microphone for clear audio recording and communication',
     ),
     EquipmentModel(
       name: 'SAMSUNG 990 PRO 2TB SSD',
-      image: 'assets/images/ItEuipment/SSD M.2 2280 NVME 2Tb PCIe Gen4 x4 SAMSUNG 990 PRO DTD882.jpg',
+      image:
+          'assets/images/ItEuipment/SSD M.2 2280 NVME 2Tb PCIe Gen4 x4 SAMSUNG 990 PRO DTD882.jpg',
       price: 2500000,
       description: '2TB M.2 NVMe PCIe Gen4 x4 SSD for high-speed storage',
     ),
     EquipmentModel(
       name: 'Unitek Type-C Hub',
-      image: 'assets/images/ItEuipment/Type-C-to-HDMI-VGA-LAN-Gigabit-3USB-3.0-Type-C-PD-100W-SDCard-Unitek-D1113A-UNT908.jpg',
+      image:
+          'assets/images/ItEuipment/Type-C-to-HDMI-VGA-LAN-Gigabit-3USB-3.0-Type-C-PD-100W-SDCard-Unitek-D1113A-UNT908.jpg',
       price: 450000,
-      description: 'Multi-function Type-C hub with HDMI, VGA, LAN, USB 3.0, and PD charging',
+      description:
+          'Multi-function Type-C hub with HDMI, VGA, LAN, USB 3.0, and PD charging',
     ),
     EquipmentModel(
       name: 'Ruijie Reyee RG-EW300T Router',
-      image: 'assets/images/ItEuipment/Wireless-Router-4G-300Mbps-Ruijie-Reyee-RG-EW300T-NET362.jpg',
+      image:
+          'assets/images/ItEuipment/Wireless-Router-4G-300Mbps-Ruijie-Reyee-RG-EW300T-NET362.jpg',
       price: 550000,
-      description: '4G wireless router with 300Mbps speed for reliable connectivity',
+      description:
+          '4G wireless router with 300Mbps speed for reliable connectivity',
     ),
-];
+  ];
 
   late List<EquipmentModel> filteredLaptops;
   final TextEditingController searchController = TextEditingController();
@@ -411,25 +472,74 @@ final List<EquipmentModel> equipments = [
                               SizedBox(height: 8),
                               SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content:
-                                              Text('Purchased ${laptop.name}')),
-                                    );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
-                                    padding: EdgeInsets.symmetric(vertical: 8),
-                                  ),
-                                  child: Text(
-                                    'Buy Now',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Provider.of<CartProvider>(context,
+                                                  listen: false)
+                                              .addItem(
+                                            id: laptop
+                                                .name, // or equipment.name for ItEquipment
+                                            name: laptop.name,
+                                            image: laptop.image,
+                                            price: laptop.price,
+                                          );
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                                content: Text(
+                                                    'Added ${laptop.name} to cart')),
+                                          );
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.blue,
+                                          padding:
+                                              EdgeInsets.symmetric(vertical: 8),
+                                        ),
+                                        child: Text(
+                                          'Add to Cart',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    SizedBox(width: 8),
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          final cartProvider =
+                                              Provider.of<CartProvider>(context,
+                                                  listen: false);
+                                          cartProvider.addItem(
+                                            id: laptop.name,
+                                            name: laptop.name,
+                                            image: laptop.image,
+                                            price: laptop.price,
+                                          );
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AddInformationPage()),
+                                          );
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.green,
+                                          padding:
+                                              EdgeInsets.symmetric(vertical: 8),
+                                        ),
+                                        child: Text(
+                                          'Buy Now',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

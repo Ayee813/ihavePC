@@ -38,6 +38,11 @@ dependencies:
   shared_preferences: ^2.3.3
   carousel_slider: ^5.0.0
   intl: ^0.20.1
+  provider: ^6.1.2
+  image_picker: ^1.1.2
+  gsheets: ^0.5.0
+  firebase_core: ^3.9.0
+  firebase_storage: ^12.3.7
 
 dev_dependencies:
   flutter_test:
@@ -84,6 +89,7 @@ flutter:
     - assets\images\ItEuipment\SSD M.2 2280 NVME 2Tb PCIe Gen4 x4 SAMSUNG 990 PRO DTD882.jpg
     - assets\images\ItEuipment\Type-C-to-HDMI-VGA-LAN-Gigabit-3USB-3.0-Type-C-PD-100W-SDCard-Unitek-D1113A-UNT908.jpg
     - assets\images\ItEuipment\Wireless-Router-4G-300Mbps-Ruijie-Reyee-RG-EW300T-NET362.jpg
+    - assets\images\QR code.jpg
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

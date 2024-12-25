@@ -1,13 +1,26 @@
+// main.dart
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_final_all/pages/AccountPage.dart';
+import 'package:flutter_final_all/pages/CheckOut/AddInformationPage.dart';
+import 'package:flutter_final_all/services/google_sheets_service.dart';
+import 'package:provider/provider.dart';
 import 'pages/HomePage.dart';
 import 'pages/ItEuipment.dart';
 import 'pages/NotebookPage.dart';
 import 'pages/AboutUsPage.dart';
 import 'pages/CartPage.dart';
 
-void main() {
-  runApp(MyApp());
+void main()  {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  // await GoogleSheetsService.init();
+  runApp(
+    ChangeNotifierProvider(
+      create: (ctx) => CartProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -18,7 +31,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
+  final List<Widget> pages = [
     HomePage(),
     NotebookPage(),
     ItEuipment(),
@@ -30,18 +43,27 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/add-information': (context) => AddInformationPage(),
+      },
       home: Scaffold(
         appBar: AppBar(
           title: const Text('I have Pc'),
           backgroundColor: const Color(0xff0077B6),
           actions: [
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  _currentIndex = 4; // Switch to CartPage
-                });
-              },
-              icon: const Icon(Icons.shopping_cart, color: Colors.white),
+            Consumer<CartProvider>(
+              builder: (ctx, cart, child) => Badge(
+                label: Text(cart.itemCount.toString()),
+                isLabelVisible: cart.itemCount > 0,
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _currentIndex = 4;
+                    });
+                  },
+                  icon: const Icon(Icons.shopping_cart, color: Colors.white),
+                ),
+              ),
             ),
             IconButton(
               onPressed: () {
@@ -54,7 +76,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ],
         ),
-        body: _pages[_currentIndex],
+        body: pages[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex < 4 ? _currentIndex : 0,
           onTap: (index) {
@@ -87,4 +109,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
